@@ -2,6 +2,13 @@ Here's a **detailed Mermaid diagram** to visually represent your Azure-based vid
 
 ---
 
+
+
+
+Thanks for the detailed background! Based on your scenario—cloud-based video solution using Azure PaaS, MVC/Entity Framework, SPA with Knockout.js, Kendo UI, and secure video blob storage—here's a full breakdown of the **SQL Database Tables**, **Azure Services** (including Service Bus and Storage), and a **scenario walkthrough** that illustrates how all these components work together.
+
+---
+
 ### 🎯 **Mermaid Architecture Diagram**
 
 ```mermaid
@@ -13,10 +20,10 @@ subgraph User Interface
     A3[Kendo UI Components]
 end
 
-subgraph Azure Web App (MVC + DI)
+subgraph Azure Web App MVC + DI
     B1[Azure App Service]
     B2[Controllers]
-    B3[Services Layer (DI)]
+    B3[Services Layer DI]
     B4[Entity Framework ORM]
 end
 
@@ -33,7 +40,7 @@ end
 
 subgraph Azure Blob Storage
     C1[Video Container]
-    C2[Blob Files (MP4)]
+    C2[Blob Files MP4]
     C3[SAS Token Generator]
 end
 
@@ -92,28 +99,7 @@ A2 -->|Filter/Search| B3 --> D1
 
 ```
 
----
 
-### 🔎 **Diagram Highlights**
-
-- **User** interacts with a **Knockout.js SPA**, which is hosted on **Azure App Service** using MVC architecture.
-- **App Service** uses **Entity Framework** and **Dependency Injection** to call into the **Azure SQL Database**.
-- Video files are stored in **Azure Blob Storage**, and SAS tokens are generated for secure access.
-- When a video is uploaded, a message is sent to **Azure Service Bus**, where three subscriptions trigger Azure Functions to:
-  - Update video metadata (e.g., status = "Processed")
-  - Transcode the video
-  - Notify users/admins
-- Download and streaming use **SAS tokens** from Blob Storage for secure access.
-- Rich filtering and tag support comes from joins between `Videos`, `Tags`, and `Categories` tables.
-
----
-
-Let me know if you’d like this exported as an image, or if you want the YAML or Bicep provisioning to go along with this architecture!
-
-
-Thanks for the detailed background! Based on your scenario—cloud-based video solution using Azure PaaS, MVC/Entity Framework, SPA with Knockout.js, Kendo UI, and secure video blob storage—here's a full breakdown of the **SQL Database Tables**, **Azure Services** (including Service Bus and Storage), and a **scenario walkthrough** that illustrates how all these components work together.
-
----
 
 ## ✅ **Solution Scenario**
 
