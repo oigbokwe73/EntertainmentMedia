@@ -1,3 +1,116 @@
+Here's a **detailed Mermaid diagram** to visually represent your Azure-based video portal architecture, including the SPA frontend, Azure PaaS services, SQL schema interaction, Blob Storage, and Service Bus processing.
+
+---
+
+### 🎯 **Mermaid Architecture Diagram**
+
+```mermaid
+graph TD
+
+subgraph User Interface
+    A1[User - Admin/Viewer]
+    A2[Knockout.js SPA UI]
+    A3[Kendo UI Components]
+end
+
+subgraph Azure Web App (MVC + DI)
+    B1[Azure App Service]
+    B2[Controllers]
+    B3[Services Layer (DI)]
+    B4[Entity Framework ORM]
+end
+
+subgraph Database
+    D1[Azure SQL Database]
+    D2[Users Table]
+    D3[Videos Table]
+    D4[Tags Table]
+    D5[VideoTags Table]
+    D6[Categories Table]
+    D7[VideoCategories Table]
+    D8[Downloads Table]
+end
+
+subgraph Azure Blob Storage
+    C1[Video Container]
+    C2[Blob Files (MP4)]
+    C3[SAS Token Generator]
+end
+
+subgraph Messaging & Background Processing
+    E1[Azure Service Bus Topic: video-events]
+    E2[Subscription: metadata-processor]
+    E3[Subscription: encoding-service]
+    E4[Subscription: notification-service]
+    F1[Azure Function - Metadata Update]
+    F2[Azure Function - Video Transcoder]
+    F3[Azure Function - Notifier]
+end
+
+%% User Interaction
+A1 --> A2
+A2 --> A3
+A3 --> B1
+
+%% App Service Components
+B1 --> B2
+B2 --> B3
+B3 --> B4
+
+%% SQL Interactions
+B4 --> D1
+D1 --> D2
+D1 --> D3
+D1 --> D4
+D1 --> D5
+D1 --> D6
+D1 --> D7
+D1 --> D8
+
+%% Blob Storage Integration
+B3 --> C3
+C3 --> C2
+C2 --> C1
+
+%% Uploading a Video
+A2 -->|Uploads MP4| C1
+C1 -->|Triggers Message| E1
+
+%% Service Bus Flow
+E1 --> E2 --> F1 --> D3
+E1 --> E3 --> F2 --> C2
+E1 --> E4 --> F3 --> A1
+
+%% Download Process
+A2 -->|Request Download| B3 --> C3 --> C2
+
+%% Playback Process
+A2 -->|View Video| B3 --> C3 --> C2
+
+%% Tag & Filter Process
+A2 -->|Filter/Search| B3 --> D1
+
+```
+
+---
+
+### 🔎 **Diagram Highlights**
+
+- **User** interacts with a **Knockout.js SPA**, which is hosted on **Azure App Service** using MVC architecture.
+- **App Service** uses **Entity Framework** and **Dependency Injection** to call into the **Azure SQL Database**.
+- Video files are stored in **Azure Blob Storage**, and SAS tokens are generated for secure access.
+- When a video is uploaded, a message is sent to **Azure Service Bus**, where three subscriptions trigger Azure Functions to:
+  - Update video metadata (e.g., status = "Processed")
+  - Transcode the video
+  - Notify users/admins
+- Download and streaming use **SAS tokens** from Blob Storage for secure access.
+- Rich filtering and tag support comes from joins between `Videos`, `Tags`, and `Categories` tables.
+
+---
+
+Let me know if you’d like this exported as an image, or if you want the YAML or Bicep provisioning to go along with this architecture!
+
+
 Thanks for the detailed background! Based on your scenario—cloud-based video solution using Azure PaaS, MVC/Entity Framework, SPA with Knockout.js, Kendo UI, and secure video blob storage—here's a full breakdown of the **SQL Database Tables**, **Azure Services** (including Service Bus and Storage), and a **scenario walkthrough** that illustrates how all these components work together.
 
 ---
