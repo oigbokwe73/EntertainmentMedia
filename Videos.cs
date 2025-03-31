@@ -1,28 +1,25 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
-using System.Linq;
-using System.IO;
 using Xenhey.BPM.Core.Net8.Implementation;
 using Xenhey.BPM.Core.Net8;
 using Microsoft.Azure.Functions.Worker;
 
 namespace EntertainmentMedia
 {
-    public class Search
+    public class Videos
     {
         private readonly ILogger _logger;
 
-        public Search(ILogger<Search> logger)
+        public Videos(ILogger<Videos> logger)
         {
             _logger = logger;
         }
 
         private HttpRequest _req;
         private NameValueCollection nvc = new NameValueCollection();
-        [Function("search")]
+        [Function("videos")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]
             HttpRequest req)
         {
