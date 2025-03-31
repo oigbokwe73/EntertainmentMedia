@@ -269,4 +269,4 @@ CREATE TABLE Downloads (
 
 ---
 
-Would you like a full **Mermaid architecture diagram** of this flow as well?
+
