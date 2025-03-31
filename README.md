@@ -1,11 +1,7 @@
-Here's a **detailed Mermaid diagram** to visually represent your Azure-based video portal architecture, including the SPA frontend, Azure PaaS services, SQL schema interaction, Blob Storage, and Service Bus processing.
-
----
 
 
 
-
-Thanks for the detailed background! Based on your scenario—cloud-based video solution using Azure PaaS, MVC/Entity Framework, SPA with Knockout.js, Kendo UI, and secure video blob storage—here's a full breakdown of the **SQL Database Tables**, **Azure Services** (including Service Bus and Storage), and a **scenario walkthrough** that illustrates how all these components work together.
+Based on your scenario—cloud-based video solution using Azure PaaS, MVC/Entity Framework, SPA with Knockout.js, Kendo UI, and secure video blob storage—here's a full breakdown of the **SQL Database Tables**, **Azure Services** (including Service Bus and Storage), and a **scenario walkthrough** that illustrates how all these components work together.
 
 ---
 
