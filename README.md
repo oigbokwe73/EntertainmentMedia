@@ -330,18 +330,31 @@ By following these steps, you'll have a serverless API in Azure that uses Servic
 
 |FileName|Description|
 |:----|:----|
-|99F77BEF300E4660A63A939ADD0BCF68.json| **Upload File** Parse CSV file --> Write Batched Files To Storage|
-|43EFE991E8614CFB9EDECF1B0FDED37A.json| **File Parser** Parse CSV file --> File received from SFTP will use this process to parse files|
-|43EFE991E8614CFB9EDECF1B0FDED37D.json| **Upload File** Parse JSON/CSV Directly to NO SQL DB|
-|43EFE991E8614CFB9EDECF1B0FDED37C.json| **Service Bus Trigger for SQL DB** | Receive JSON payload and insert into SQL DB|
+|65D7ADCBAABC41B1B0B14A2FBBDF58F2.json| Create a user|
+|7879AD00E61D4BDD8EB5805F5244A937.json| Read user information|
+|A5827573F1B541F18EA226312D69134F.json| Update user information|
+|0EBDA7906A644B178CB04E6ECD538C87.json| Delete a user|
+|B13A8DE83A1F4E06950B023CB2521C83.json| Create a Video|
+|B6015755FA424F49B36A36AC621E92C7.json| Read Video information|
+|DCFCEE23C1C94739AD7079B3A365BB93.json| Update Video information|
+|BF7C51E3ADDD4BE8B2266C5FAB500ABF.json| Delete a Video|
+|AFCDDA2B2FBF42DEBDBCACF2B25128F4.json| Create a Tag|
+|4B53AE181A214BDB9AC80D7937D1E946.json| Read Tag information|
+|44EB960F55B14912A1239DC26806866E.json| Update Tag information|
+|7C8FBE22BEFD404CA860876DFB4E8BA5.json| Delete a Tag|
+|C266F9D8466148F2B1DAB95D18A4265C.json| Create a VideoTag|
+|A90DAAD67DFA4745850C731C0493C1AE.json| Read VideoTag information|
+|4E765080C6004965BFD5F86842666161.json| Update VideoTag information|
+|8C432CFDED1E4279A3DDC6E3022EA885.json| Delete a VideoTag|
+|FC457500EF504E22B5A289D64CBC5CED.json| Create a VideoCategory|
+|5C0BA404D2B64075BCE3F43F2B979D5C.json| Read VideoCategory information|
+|43096B0DFF6145DE885881230E91EA50.json| Update VideoCategory information|
+|7A471E878A104AAD89B7FF26B0141FE1.json| Delete a VideoCategory|
+|86302E0777EC4958AB870B51802128F8.json| Uploa a Document|
+|1A9EAD13F50941CF9373092DCFBA0F2C.json| Read Document information|
+|A844A9A919CE4670AAF357DCB1A07991.json| Update Document information|
+|D75123247B834C21911DB263592B7970.json| Delete a Document|
 |43EFE991E8614CFB9EDECF1B0FDED37F.json| **Service Bus Trigger for No SQL DB** | Receive JSON payload and insert into NO SQL DB|
-|43EFE991E8614CFB9EDECF1B0FDED37E.json| **Blob Trigger** Send parsed/sharded file  to Send to Service Bus|
-|43EFE991E8614CFB9EDECF1B0FDED37B.json| **Search Resullt from NO SQLDB** |
-|43EFE991E8614CFB9EDECF1B0FDED37G.json| **Search SQL DB. Return resultset** |
-|3FB620B0E0FD4E8F93C9E4D839D00E1E.json| **Copy File from SFTP into the pickup folder** |
-|3FB620B0E0FD4E8F93C9E4D839D00E1F.json| **Create a new Record in NoSQL Database** |
-|CC244934898F46789734A9437B6F76CA.json| Encode Payload Request |
-|6B427917E36A4DA281D57F9A64AD9D55.json| Get reports from DB  |
 
 
 > Create the following blob containers and share in azure storage
